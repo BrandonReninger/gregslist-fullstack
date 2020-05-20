@@ -4,13 +4,16 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 // @ts-ignore
 import Dashboard from "./views/Dashboard.vue";
-import { authGuard } from "@bcwdev/auth0-vue";
+// @ts-ignore
+import CarDetails from "./views/CarDetails.vue";
+import {
+  authGuard
+} from "@bcwdev/auth0-vue";
 
 Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: "/",
       name: "home",
       component: Home
@@ -19,6 +22,13 @@ export default new Router({
       path: "/dashboard",
       name: "dashboard",
       component: Dashboard,
+      beforeEnter: authGuard
+    },
+    {
+
+      path: "/cars/:carId",
+      name: "car-details",
+      component: CarDetails,
       beforeEnter: authGuard
     }
   ]

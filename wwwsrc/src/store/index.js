@@ -5,9 +5,9 @@ import router from "../router";
 
 Vue.use(Vuex);
 
-let baseUrl = location.host.includes("localhost")
-  ? "https://localhost:5001/"
-  : "/";
+let baseUrl = location.host.includes("localhost") ?
+  "https://localhost:5001/" :
+  "/";
 
 let api = Axios.create({
   baseURL: baseUrl + "api/",
@@ -17,25 +17,35 @@ let api = Axios.create({
 
 export default new Vuex.Store({
   state: {
-    cars: []
+    cars: [],
+    activeCar: {}
   },
   mutations: {
     setCars(state, cars) {
       state.cars = cars
+    },
+    setActiveCar(state, car) {
+      state.activeCar = car
     }
   },
   actions: {
-    setBearer({ }, bearer) {
+    setBearer({}, bearer) {
       api.defaults.headers.authorization = bearer;
     },
     resetBearer() {
       api.defaults.headers.authorization = "";
     },
-    async createCar({ commit, dispatch }, newCar) {
+    async createCar({
+      commit,
+      dispatch
+    }, newCar) {
       let res = await api.post("cars", newCar)
       dispatch("getCars")
     },
-    async getCars({ commit, dispatch }) {
+    async getCars({
+      commit,
+      dispatch
+    }) {
       try {
         let res = await api.get("cars")
         commit("setCars", res.data)
@@ -43,15 +53,28 @@ export default new Vuex.Store({
         alert(JSON.stringify(err));
       }
     },
-    async deleteCar({ dispatch }, carId) {
+    async deleteCar({
+      dispatch
+    }, carId) {
       try {
         await api.delete("cars/" + carId)
         dispatch("getCars")
       } catch (error) {
-        debugger
         alert(JSON.stringify(error.response.data));
       }
 
+    },
+
+    async carDetails({
+      commit,
+      dispatch
+    }, carId) {
+      try {
+        let res = await api.get('cars' + carId)
+        commit('setActiveCar', res.data)
+      } catch (error) {
+        console.error(error)
+      }
     }
 
   }
