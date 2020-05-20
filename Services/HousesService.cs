@@ -13,5 +13,15 @@ namespace fullstack_gregslist.Services
         {
             _repo = repo;
         }
+
+        internal IEnumerable<House> GetAll()
+        {
+            return _repo.GetAll();
+        }
+
+        internal House Create(House newHouse)
+        {
+            return _repo.Create(newHouse);
+        }
     }
 }

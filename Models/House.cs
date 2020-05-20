@@ -5,7 +5,7 @@ namespace fullstack_gregslist.Models
     public class House
     {
         public int Id { get; set; }
-        [Required]
+        public string UserId { get; set; }
         public int Bedrooms { get; set; }
         [Required]
         public int Bathrooms { get; set; }
