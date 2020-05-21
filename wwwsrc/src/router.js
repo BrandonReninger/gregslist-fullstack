@@ -5,7 +5,7 @@ import Home from "./views/Home.vue";
 // @ts-ignore
 import Dashboard from "./views/Dashboard.vue";
 // @ts-ignore
-import CarDetails from "./views/CarDetails.vue";
+import Car from "./views/Car.vue";
 import {
   authGuard
 } from "@bcwdev/auth0-vue";
@@ -27,9 +27,9 @@ export default new Router({
     {
 
       path: "/cars/:carId",
-      name: "car-details",
-      component: CarDetails,
-      beforeEnter: authGuard
+      name: "car",
+      component: Car,
+      // beforeEnter: authGuard
     }
   ]
 });

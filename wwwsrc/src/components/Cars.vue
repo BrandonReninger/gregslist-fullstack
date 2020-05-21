@@ -8,7 +8,10 @@
         <h2>${{car.price}}</h2>
         <h2>{{car.year}}</h2>
         <h2>{{car.body}}</h2>
-        <button class="btn btn-primary btn-block" @click="carDetails">DETAILS</button>
+        <button
+          class="btn btn-primary btn-block"
+          @click="$router.push({name: 'car', params: {carId :car.id}})"
+        >DETAILS</button>
         <button class="btn btn-danger btn-block" @click="deleteCar(car.id)">Delete</button>
       </div>
     </div>
@@ -33,15 +36,6 @@ export default {
   methods: {
     deleteCar(carId) {
       this.$store.dispatch("deleteCar", carId);
-    },
-    carDetails() {
-      // console.log(this.activeCar);
-      this.$store.commit("setActiveCar");
-      this.$store.dispatch("carDetails", this.carData.id);
-      this.$router.push({
-        name: "CarDetails",
-        params: { carId: this.carData.id }
-      });
     }
   },
   components: {}

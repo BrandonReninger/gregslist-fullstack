@@ -42,6 +42,7 @@ export default new Vuex.Store({
       let res = await api.post("cars", newCar)
       dispatch("getCars")
     },
+
     async getCars({
       commit,
       dispatch
@@ -53,6 +54,18 @@ export default new Vuex.Store({
         alert(JSON.stringify(err));
       }
     },
+
+    async getCar({
+      commit
+    }, carId) {
+      try {
+        let res = await api.get("/cars/" + carId)
+        commit("setActiveCar", res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
     async deleteCar({
       dispatch
     }, carId) {

@@ -5,20 +5,22 @@
       <div class="col-4 ml-2">
         <create-car></create-car>
       </div>
+      <div class="col-4">
+        <create-house></create-house>
+      </div>
     </div>
     <cars></cars>
-    <houses></houses>
   </div>
 </template>
 
 <script>
 import CreateCar from "../components/CreateCar.vue";
 import Cars from "../components/Cars.vue";
-import Houses from "../components/Houses.vue";
+import CreateHouse from "../components/CreateHouse.vue";
 export default {
   mounted() {},
   computed: {},
-  components: { CreateCar, Cars, Houses }
+  components: { CreateCar, Cars, CreateHouse }
 };
 </script>
 
