@@ -1,7 +1,11 @@
 <template>
   <div class="dashboard">
     <h1>WELCOME TO THE DASHBOARD</h1>
-    <create-car></create-car>
+    <div class="row">
+      <div class="col-4 ml-2">
+        <create-car></create-car>
+      </div>
+    </div>
     <cars></cars>
     <houses></houses>
   </div>

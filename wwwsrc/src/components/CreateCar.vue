@@ -74,7 +74,14 @@ export default {
       newCar: {}
     };
   },
-  computed: {},
+  mounted() {
+    this.$store.dispatch("getCars");
+  },
+  computed: {
+    cars() {
+      return this.$store.state.cars;
+    }
+  },
   methods: {
     createCar() {
       this.newCar.productionYear = +this.newCar.productionYear;
