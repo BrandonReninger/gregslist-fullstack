@@ -18,5 +18,10 @@ namespace fullstack_gregslist.Services
         {
             return _repo.GetAll();
         }
+
+        internal Job Create(Job newJob)
+        {
+            return _repo.Create(newJob);
+        }
     }
 }

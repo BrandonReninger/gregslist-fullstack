@@ -32,5 +32,24 @@ namespace fullstack_gregslist.Controllers
                 return BadRequest(err.Message);
             }
         }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult<Job> Create([FromBody] Job newJob)
+        {
+            try
+            {
+                Claim user = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+                if (user == null)
+                {
+                    throw new Exception("Login to do that!");
+                }
+                return Ok(_js.Create(newJob));
+            }
+            catch (System.Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
     }
 }
