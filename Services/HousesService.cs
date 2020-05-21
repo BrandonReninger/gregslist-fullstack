@@ -23,5 +23,29 @@ namespace fullstack_gregslist.Services
         {
             return _repo.Create(newHouse);
         }
+
+        internal House GetById(int id)
+        {
+            House foundHouse = _repo.GetById(id);
+            if (foundHouse == null)
+            {
+                throw new Exception("invalid id!!");
+            }
+            return foundHouse;
+        }
+
+        internal string Delete(int id, string userId)
+        {
+            House foundHouse = GetById(id);
+            if (foundHouse.UserId != userId)
+            {
+                throw new Exception("Not your house bud!");
+            }
+            if (_repo.Delete(id, userId))
+            {
+                return "Deleted Successfully";
+            }
+            throw new Exception("Mistakes were made");
+        }
     }
 }

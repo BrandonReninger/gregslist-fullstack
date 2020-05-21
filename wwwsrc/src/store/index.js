@@ -98,7 +98,6 @@ export default new Vuex.Store({
       dispatch
     }, newHouse) {
       try {
-        debugger
         let res = await api.post('houses', newHouse)
         dispatch('getHouses')
       } catch (error) {
@@ -112,6 +111,17 @@ export default new Vuex.Store({
       try {
         let res = await api.get('houses')
         commit('setHouses', res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+    async deleteHouse({
+      dispatch
+    }, houseId) {
+      try {
+        await api.delete("houses/" + houseId)
+        dispatch('getHouses')
       } catch (error) {
         console.error(error)
       }

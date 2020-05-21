@@ -28,7 +28,12 @@ export default {
       return this.$store.state.houses;
     }
   },
-  methods: {},
+  methods: {
+    deleteHouse(houseId) {
+      console.log("delhouse", houseId);
+      this.$store.dispatch("deleteHouse", houseId);
+    }
+  },
   components: {}
 };
 </script>
