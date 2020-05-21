@@ -45,14 +45,14 @@ namespace fullstack_gregslist
             {
                 options.AddPolicy("CorsDevPolicy", builder =>
           {
-                  builder
-            .WithOrigins(new string[]{
+              builder
+        .WithOrigins(new string[]{
                 "http://localhost:8080", "http://localhost:8081"
-                })
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials();
-              });
+            })
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials();
+          });
             });
 
             services.AddControllers();
@@ -61,6 +61,8 @@ namespace fullstack_gregslist
             services.AddTransient<CarsRepository>();
             services.AddTransient<HousesService>();
             services.AddTransient<HousesRepository>();
+            services.AddTransient<JobsService>();
+            services.AddTransient<JobsRepository>();
         }
 
         private IDbConnection CreateDbConnection()
