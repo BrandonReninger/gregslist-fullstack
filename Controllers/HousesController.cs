@@ -32,6 +32,7 @@ namespace fullstack_gregslist.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult<House> Create([FromBody] House newHouse)
         {

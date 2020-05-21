@@ -1,6 +1,6 @@
 <template>
   <div class="create-house">
-    <form @submit.prevent="createHouse()">
+    <form @submit.prevent="addHouse()">
       <div class="form-group">
         <label for="bedrooms">Bedrooms</label>
         <input
@@ -86,7 +86,17 @@ export default {
     };
   },
   computed: {},
-  methods: {},
+  methods: {
+    addHouse() {
+      this.newHouse.bedrooms = +this.newHouse.bedrooms;
+      this.newHouse.bathrooms = +this.newHouse.bathrooms;
+      this.newHouse.levels = +this.newHouse.levels;
+      this.newHouse.year = +this.newHouse.year;
+      this.newHouse.price = +this.newHouse.price;
+      this.$store.dispatch("addHouse", this.newHouse);
+      // console.log("addHouse");
+    }
+  },
   components: {}
 };
 </script>

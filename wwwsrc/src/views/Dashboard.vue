@@ -10,6 +10,7 @@
       </div>
     </div>
     <cars></cars>
+    <houses></houses>
   </div>
 </template>
 
@@ -17,10 +18,11 @@
 import CreateCar from "../components/CreateCar.vue";
 import Cars from "../components/Cars.vue";
 import CreateHouse from "../components/CreateHouse.vue";
+import Houses from "../components/Houses.vue";
 export default {
   mounted() {},
   computed: {},
-  components: { CreateCar, Cars, CreateHouse }
+  components: { CreateCar, Cars, CreateHouse, Houses }
 };
 </script>
 
