@@ -12,7 +12,6 @@
           class="btn btn-primary btn-block"
           @click="$router.push({name: 'car', params: {carId :car.id}})"
         >DETAILS</button>
-        <button class="btn btn-danger btn-block" @click="deleteCar(car.id)">Delete</button>
       </div>
     </div>
   </div>
@@ -33,11 +32,7 @@ export default {
       return this.$store.state.cars;
     }
   },
-  methods: {
-    deleteCar(carId) {
-      this.$store.dispatch("deleteCar", carId);
-    }
-  },
+  methods: {},
   components: {}
 };
 </script>

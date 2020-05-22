@@ -83,7 +83,17 @@ export default new Vuex.Store({
       } catch (error) {
         alert(JSON.stringify(error.response.data));
       }
+    },
 
+    async bidOnCar({
+      commit
+    }, payload) {
+      try {
+        let res = await api.put("cars/" + payload.id, payload)
+        commit("setActiveCar", res.data)
+      } catch (error) {
+        console.error(error)
+      }
     },
 
     async carDetails({
