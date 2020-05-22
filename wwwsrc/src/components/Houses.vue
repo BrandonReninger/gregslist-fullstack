@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     deleteHouse(houseId) {
-      console.log("delhouse", houseId);
+      // console.log("delhouse", houseId);
       this.$store.dispatch("deleteHouse", houseId);
     }
   },

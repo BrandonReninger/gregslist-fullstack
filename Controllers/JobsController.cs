@@ -44,6 +44,7 @@ namespace fullstack_gregslist.Controllers
                 {
                     throw new Exception("Login to do that!");
                 }
+                newJob.UserId = user.Value;
                 return Ok(_js.Create(newJob));
             }
             catch (System.Exception err)
